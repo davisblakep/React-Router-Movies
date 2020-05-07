@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const SavedList = props => (
   <div className="saved-list">
@@ -8,13 +8,13 @@ const SavedList = props => (
     <button onClick={props.clearSaved}>Clear</button>
     </div>
     {props.list.map(movie => (
-      <Link to={`/${movie.id}`}>
+      <NavLink to={`/${movie.id}`}>
       <span className="saved-movie">{movie.title}</span>
-      </Link>
+      </NavLink>
     ))}
-    <Link style={{textDecoration: 'none'}} exact to='/'>
+    <NavLink style={{textDecoration: 'none'}} exact to='/'>
     <div className="home-button">Home</div>
-    </Link>
+    </NavLink>
   </div>
 );
 
