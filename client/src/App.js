@@ -10,6 +10,8 @@ const App = () => {
   const [savedList, setSavedList] = useState([]);
   const [movieList, setMovieList] = useState([]);
 
+  console.log("Saved movie list", savedList)
+
   useEffect(() => {
     const getMovies = () => {
       axios
@@ -28,15 +30,19 @@ const App = () => {
     setSavedList([...savedList, movie]);
   };
 
+  const clearSaved = () => {
+    setSavedList([]);
+  }
+
   return (
     <div>
-      <SavedList list={savedList} />
+      <SavedList clearSaved={clearSaved} list={savedList} />
       <div>
         <Route exact path='/'>
           <MovieList movies={movieList} />
         </Route>
         <Route path='/:id'>
-          <Movie />
+          <Movie addToSavedList={addToSavedList} />
         </Route>
       </div>
     </div>
