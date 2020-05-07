@@ -8,7 +8,9 @@ const SavedList = props => (
     <button onClick={props.clearSaved}>Clear</button>
     </div>
     {props.list.map(movie => (
+      <Link to={`/${movie.id}`}>
       <span className="saved-movie">{movie.title}</span>
+      </Link>
     ))}
     <Link style={{textDecoration: 'none'}} exact to='/'>
     <div className="home-button">Home</div>
